@@ -1,0 +1,8 @@
+__pycache__/
+*.so
+bin/
+venv/
+.idea/
+.git/
+lib/
+*.user

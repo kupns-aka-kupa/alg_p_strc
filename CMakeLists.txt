@@ -1,0 +1,29 @@
+cmake_minimum_required(VERSION 3.5)
+
+project(storage LANGUAGES CXX)
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -O2")
+
+set(EXECUTABLE_OUTPUT_PATH "${PROJECT_SOURCE_DIR}/bin")
+set(LIBRARY_OUTPUT_PATH "${PROJECT_SOURCE_DIR}/lib")
+set(PATTERNS_SOURCE_DIR "${PROJECT_SOURCE_DIR}/patterns")
+set(STRUCTS_SOURCE_DIR "${PROJECT_SOURCE_DIR}/structs")
+
+add_subdirectory(${PATTERNS_SOURCE_DIR})
+add_subdirectory(${STRUCTS_SOURCE_DIR})
+
+add_executable(${PROJECT_NAME} "main.cpp")
+
+target_link_libraries (${PROJECT_NAME} LINK_PUBLIC
+   ${PATTERNS_SOURCE_DIR}
+   ${STRUCTS_SOURCE_DIR}
+)
+
+link_directories(${LIBRARY_OUTPUT_PATH})
+
+target_include_directories (${PROJECT_NAME} PUBLIC
+    ${PROJECT_SOURCE_DIR}
+    ${PATTERNS_SOURCE_DIR}
+    ${STRUCTS_SOURCE_DIR}
+)
