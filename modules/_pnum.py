@@ -31,22 +31,13 @@ def tblgen(mass):
     return str_res
 
 
-def ersieve(n=10):
-    trash = [2]
-    res = [2]
-    for i in range(3, n):
-        trash.append(i)
-        exep = False
-        for j in trash:
-            if i % j == 0:
-                if i != j:
-                    exep = True
-                break
-        if exep:
-            continue
-        else:
-            res.append(i)
-    return res
+def ersieve(end=10):
+    _end = end + 1
+    sieve = set(range(2, _end))
+    for i in range(2, _end):
+        if i in sieve:
+            sieve -= set(range(2 * i, _end, i))
+    return sieve
 
 
 def atksieve(n=10):
