@@ -1,7 +1,7 @@
 #ifndef STACK_H
 #define STACK_H
 
-#include "utils/_node_dl.hpp"
+#include "../node/_node_dl.hpp"
 
 template<typename T>
 class Stack
@@ -71,6 +71,5 @@ bool Stack<T>::empty()
 {
     return (_size != 0 ? false : true);
 }
-
 
 #endif // STACK_H

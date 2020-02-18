@@ -4,6 +4,8 @@ from .._5kyu.max_sub_array_sum import max_sequence
 from .._5kyu.kprimes import *
 from .._5kyu.simple_pig import pig_it
 from .._5kyu.number_factorization import primeFactors
+from .._4kyu.longest_slide_down import longestSlideDown
+from .._4kyu.decompose_int import decompose
 import unittest
 
 
@@ -91,6 +93,13 @@ class KatasTestCase(unittest.TestCase):
 
     def test_num_factorization(self):
         self.assertEqual(primeFactors(7775460), "(2**2)(3**3)(5)(7)(11**2)(17)")
+
+    def test_longest_slide_down(self):
+        self.assertEqual(longestSlideDown([[3], [7, 4], [2, 4, 6], [8, 5, 9, 3]]), 23)
+
+    def test_decompose_int(self):
+        self.assertEqual(decompose(11), [1, 2, 4, 10])
+        self.assertEqual(decompose(50), [1, 3, 5, 8, 49])
 
 
 if __name__ == '__main__':

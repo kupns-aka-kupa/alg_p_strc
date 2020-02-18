@@ -1,10 +1,12 @@
 #ifndef TREE_HPP
 #define TREE_HPP
 
-#include "utils/_node_kdll.hpp"
+#include "../node/_node_kdll.hpp"
+#include "graph.hpp"
+
 
 template<typename K, typename T>
-class Tree
+class Tree : Graph<T>
 {
 private:
     NodeKDLL<K, T> *_root;
@@ -40,6 +42,5 @@ template<typename K, typename T>
 Tree<K, T>::~Tree()
 {}
 
-#include "tree.hpp"
 
 #endif // TREE_HPP

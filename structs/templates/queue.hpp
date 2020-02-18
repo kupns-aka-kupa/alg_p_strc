@@ -1,3 +1,41 @@
+#ifndef QUEUE_H
+#define QUEUE_H
+
+#include "../node/_node_dl.hpp"
+
+template<typename T>
+class Queue
+{
+private:
+    NodeDL<T> *_head;
+    NodeDL<T> *_tail;
+    uint32_t _len;
+
+public:
+    Queue();
+
+    template<typename... Args>
+    Queue(Args... args) : Queue()
+    {
+        uint32_t l = sizeof... (Args);
+        T items [l] { args... };
+        for(uint32_t i = 0; i < l; i++)
+        {
+            push(items[i]);
+        }
+    }
+
+    ~Queue();
+
+    T head();
+    T tail();
+    T pop();
+
+    void push(T);
+    bool empty();
+
+};
+
 template<typename T>
 Queue<T>::Queue():
     _head(nullptr),
@@ -70,3 +108,5 @@ bool Queue<T>::empty()
 {
     return (_len != 0 ? false : true);
 }
+
+#endif // QUEUE_H

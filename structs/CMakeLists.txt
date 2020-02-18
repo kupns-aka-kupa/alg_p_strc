@@ -2,33 +2,33 @@ cmake_minimum_required(VERSION 3.5)
 
 project(struct)
 
-set(UTILS_DIR "${PROJECT_SOURCE_DIR}/utils")
-
-set(INCLUDE_DIRi "${PROJECT_SOURCE_DIR}/inc")
-set(SOURCE_DIR "${PROJECT_SOURCE_DIR}/src")
+set(NODES_DIR "${PROJECT_SOURCE_DIR}/node")
+set(INCLUDE_DIR "${PROJECT_SOURCE_DIR}/includes")
+set(SOURCE_DIR "${PROJECT_SOURCE_DIR}/sources")
+set(TEMPLATE_DIR "${PROJECT_SOURCE_DIR}/templates")
 
 include_directories (
-    ${UTILS_DIR}
+    ${NODES_DIR}
     ${INCLUDE_DIR}
     ${SOURCE_DIR}
+    ${TEMPLATE_DIR}
 )
 
 file(GLOB SOURCE_FILES
-    ${UTILS_DIR}/*.tpp
-    ${PROJECT_SOURCE_DIR}/*.tpp
-    ${SOURCE_FILES}/*.tpp
-    ${HEADER_FILES}/*.tpp
+    ${SOURCE_DIR}/*.cpp
+)
+
+file(GLOB TEMPLATE_FILES
+    ${TEMPLATE_DIR}/*hpp
 )
 
 file(GLOB HEADER_FILES
-    ${UTILS_DIR}/*.hpp
-    ${PROJECT_SOURCE_DIR}/*.hpp
-    ${SOURCE_FILES}/*.hpp
-    ${HEADER_FILES}/*.hpp
+    ${NODES_DIR}/*.hpp
+    ${INCLUDE_DIR}/*.hpp
 )
 
 add_library(${PROJECT_NAME}
-    ${SOURCE_FILES}
+    ${TEMPLATE_FILES}
     ${HEADER_FILES}
 )
 
@@ -36,7 +36,9 @@ set_target_properties(${PROJECT_NAME}
  PROPERTIES LINKER_LANGUAGE CXX)
 
 target_link_directories(${PROJECT_NAME}
-    PRIVATE ${UTILS_DIR}
+    PRIVATE
+            ${NODES_DIR}
+            ${TEMPLATE_DIR}
             ${SOURCE_DIR}
             ${PROJECT_SOURCE_DIR}
     PUBLIC

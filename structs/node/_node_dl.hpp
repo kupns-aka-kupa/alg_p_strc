@@ -1,10 +1,10 @@
 #ifndef NODEDL_H
 #define NODEDL_H
 
-#include "_node_dlxx.hpp"
+#include "_node.hpp"
 
 template<typename _T>
-struct NodeDL : public NodeDLXX<_T>
+struct NodeDL : public Node<_T>
 {
     NodeDL<_T> *next;
 
@@ -15,11 +15,11 @@ struct NodeDL : public NodeDLXX<_T>
 };
 
 template<typename _T>
-NodeDL<_T>::NodeDL() : NodeDLXX<_T>() {}
+NodeDL<_T>::NodeDL() : Node<_T>() {}
 
 template<typename _T>
 NodeDL<_T>::NodeDL(_T data, NodeDL<_T> *next) :
-    NodeDLXX<_T>(data, new NodeDLXX<_T> *{ dynamic_cast<NodeDLXX<_T> *>(next) }),
+    Node<_T>(data),
     next(next) {}
 
 template<typename _T>

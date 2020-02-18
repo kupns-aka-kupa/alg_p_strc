@@ -1,10 +1,10 @@
 #ifndef NODEDLL_H
 #define NODEDLL_H
 
-#include "_node_dlxx.hpp"
+#include "_node.hpp"
 
 template<typename _T>
-struct NodeDLL : public NodeDLXX<_T>
+struct NodeDLL : public Node<_T>
 {
     NodeDLL<_T> *prev;
     NodeDLL<_T> *next;
@@ -19,15 +19,13 @@ struct NodeDLL : public NodeDLXX<_T>
 
 template<typename _T>
 NodeDLL<_T>::NodeDLL() :
-    NodeDLXX<_T>(),
+    Node<_T>(),
     prev(nullptr),
     next(nullptr) {}
 
 template<typename _T>
 NodeDLL<_T>::NodeDLL(_T data, NodeDLL<_T> *prev, NodeDLL<_T> *next) :
-     NodeDLXX<_T>(data, new NodeDLXX<_T> *[2]{
-         dynamic_cast< NodeDLXX<_T> *>(prev),
-         dynamic_cast< NodeDLXX<_T> *>(next) }),
+     Node<_T>(data),
      prev(prev),
      next(next) {}
 
@@ -45,4 +43,5 @@ void NodeDLL<_T>::swap_direction()
     prev = next;
     next = tmp;
 }
+
 #endif // NODEDLL_H
