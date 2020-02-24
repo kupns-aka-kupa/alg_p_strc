@@ -1,15 +1,56 @@
-from .._6kyu.super_coords_sum import super_sum
-from .._6kyu.ulam_seq import ulam_seq
+import unittest
 from .._5kyu.max_sub_array_sum import max_sequence
 from .._5kyu.kprimes import *
 from .._5kyu.simple_pig import pig_it
 from .._5kyu.number_factorization import primeFactors
-from .._4kyu.longest_slide_down import longestSlideDown
-from .._4kyu.decompose_int import decompose
-import unittest
+from .._5kyu.password_validation import validate_password
+from .._5kyu.date_validation import date_validation
 
 
-class KatasTestCase(unittest.TestCase):
+class Katas5TestCase(unittest.TestCase):
+
+    def test_date_validation(self):
+        self.assertEqual(date_validation("29.02.2016"), True)
+        self.assertEqual(date_validation("29.02.0400"), True)
+        self.assertEqual(date_validation("30.01.2009"), True)
+        self.assertEqual(date_validation("29.02.2009"), False)
+        self.assertEqual(date_validation("29.02.0100"), False)
+        self.assertEqual(date_validation("29.02.9700"), False)
+        self.assertEqual(date_validation("31.03.0000"), False)
+        self.assertEqual(date_validation("29.02.0004"), True)
+        self.assertEqual(date_validation("29.01.2009"), True)
+        self.assertEqual(date_validation("31.03.2009"), True)
+        self.assertEqual(date_validation("31.04.2009"), False)
+        self.assertEqual(date_validation('01.01.2009'), True)
+        self.assertEqual(date_validation('01-Jan-2009'), False)
+        self.assertEqual(date_validation('05.15.2009'), False)
+        self.assertEqual(date_validation("01-01-2009"), False)
+        self.assertEqual(date_validation("28.02.2020"), True)
+
+    def test_password_validation(self):
+        self.assertEqual(validate_password('fjd3IR9'), True)
+        self.assertEqual(validate_password('j/3XbiHwD1'), False)
+        self.assertEqual(validate_password('+Zg7Y6lt'), False)
+        self.assertEqual(validate_password('\\PLNy8W6fD0F1Vn'), False)
+        self.assertEqual(validate_password('NX3\\O49IJnWj3y3'), False)
+        self.assertEqual(validate_password('woEg81pqVa_S'), False)
+        self.assertEqual(validate_password('ghdfj32'), False)
+        self.assertEqual(validate_password('DSJKHD23'), False)
+        self.assertEqual(validate_password('dsF43'), False)
+        self.assertEqual(validate_password('4fdg5Fj3'), True)
+        self.assertEqual(validate_password('DHSJdhjsU'), False)
+        self.assertEqual(validate_password('fjd3IR9.;'), False)
+        self.assertEqual(validate_password('fjd3  IR9'), False)
+        self.assertEqual(validate_password('djI38D55'), True)
+        self.assertEqual(validate_password('a2.d412'), False)
+        self.assertEqual(validate_password('JHD5FJ53'), False)
+        self.assertEqual(validate_password('!fdjn345'), False)
+        self.assertEqual(validate_password('jfkdfj3j'), False)
+        self.assertEqual(validate_password('123'), False)
+        self.assertEqual(validate_password('abc'), False)
+        self.assertEqual(validate_password('123abcABC'), True)
+        self.assertEqual(validate_password('ABC123abc'), True)
+        self.assertEqual(validate_password('Password123'), True)
 
     def test_super_max_seq(self):
         self.assertEqual(max_sequence([-2, 1, -3, 4, -1, 2, 1, -5, 4]), [[4, -1, 2, 1], 6])
@@ -19,32 +60,6 @@ class KatasTestCase(unittest.TestCase):
         self.assertEqual(max_sequence([2, 1, 2, 1]), [[2, 1, 2, 1], 6])
         self.assertEqual(max_sequence([-2, -1, -2, -1]), [[], 0])
         self.assertEqual(max_sequence([]), [[], 0])
-
-    def test_super_sum(self):
-        self.assertEqual(super_sum(1, 1), 0)
-        self.assertEqual(super_sum(1, 10), 45)
-        self.assertEqual(super_sum(2, 2), 4)
-        self.assertEqual(super_sum(2, 3), 18)
-        self.assertEqual(super_sum(2, 10), 900)
-        self.assertEqual(super_sum(3, 3), 81)
-        self.assertEqual(super_sum(4, 4), 1536)
-        self.assertEqual(super_sum(5, 5), 31250)
-        self.assertEqual(super_sum(6, 6), 699840)
-        self.assertEqual(super_sum(7, 7), 17294403)
-        self.assertEqual(super_sum(8, 8), 469762048)
-
-    def test_ulam_seq(self):
-        self.assertEqual(ulam_seq(1, 2, 5), [1, 2, 3, 4, 6])
-        self.assertEqual(ulam_seq(1, 2, 5), [1, 2, 3, 4, 6])
-        self.assertEqual(ulam_seq(3, 4, 5), [3, 4, 7, 10, 11])
-        self.assertEqual(ulam_seq(5, 6, 8), [5, 6, 11, 16, 17, 21, 23, 26])
-        self.assertEqual(ulam_seq(3, 4, 5), [3, 4, 7, 10, 11])
-        a = [1, 2, 3, 4, 6, 8, 11, 13, 16, 18, 26, 28, 36, 38, 47, 48, 53, 57, 62, 69]
-        self.assertEqual(ulam_seq(1, 2, 20), a)
-        a = [1, 3, 4, 5, 6, 8, 10, 12, 17, 21, 23, 28, 32, 34, 39, 43, 48, 52, 54, 59, 63, 68, 72, 74, 79, 83, 98, 99,
-             101, 110, 114, 121, 125, 132, 136, 139, 143, 145, 152, 161, 165, 172, 176, 187, 192, 196, 201, 205, 212,
-             216, 223, 227, 232, 234, 236, 243, 247, 252, 256, 258]
-        self.assertEqual(ulam_seq(1, 3, 60), a)
 
     def test_k_number(self):
         self.assertEqual(count_Kprimes(5, 500, 600), [500, 520, 552, 567, 588, 592, 594])
@@ -93,13 +108,6 @@ class KatasTestCase(unittest.TestCase):
 
     def test_num_factorization(self):
         self.assertEqual(primeFactors(7775460), "(2**2)(3**3)(5)(7)(11**2)(17)")
-
-    def test_longest_slide_down(self):
-        self.assertEqual(longestSlideDown([[3], [7, 4], [2, 4, 6], [8, 5, 9, 3]]), 23)
-
-    def test_decompose_int(self):
-        self.assertEqual(decompose(11), [1, 2, 4, 10])
-        self.assertEqual(decompose(50), [1, 3, 5, 8, 49])
 
 
 if __name__ == '__main__':

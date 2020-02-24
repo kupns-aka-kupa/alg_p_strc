@@ -41,13 +41,13 @@ def chanso(mass):
 
 @timeit
 def mersow(mass):
-    def merge_sort(mass):
+    def slicing(mass):
         if len(mass) <= 1:
             return mass
         else:
-            mid = math.floor(len(mass) / 2)
-            r = merge_sort(mass[: mid])
-            l = merge_sort(mass[mid:])
+            mid = len(mass) // 2
+            r = slicing(mass[: mid])
+            l = slicing(mass[mid:])
             return merge(r, l)
 
     def merge(r, l):
@@ -56,15 +56,11 @@ def mersow(mass):
             if r[0] <= l[0]:
                 merged.append(r[0])
                 r.pop(0)
-                # or
-                # r = r[1:]
             else:
                 merged.append(l[0])
                 l.pop(0)
-        if len(r) > 0:
-            merged += r
-        elif len(l) > 0:
-            merged += l
+        merged += r
+        merged += l
         return merged
 
-    return merge_sort(mass)
+    return slicing(mass)

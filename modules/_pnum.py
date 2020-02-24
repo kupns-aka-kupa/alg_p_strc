@@ -1,7 +1,7 @@
 from math import floor
 
 
-def tblgen(mass):
+def html_table_gen(mass):
     str_res = ''
     table = {
         'tbs': '<table border="1">',
@@ -31,7 +31,7 @@ def tblgen(mass):
     return str_res
 
 
-def ersieve(end=10):
+def erat_sieve(end=10):
     _end = end + 1
     sieve = set(range(2, _end))
     for i in range(2, _end):
@@ -40,7 +40,7 @@ def ersieve(end=10):
     return sieve
 
 
-def atksieve(n=10):
+def atkin_sieve(n=10):
     sq = floor(n ** (1 / 2))
     res = [False for i in range(n)]
     res[2] = True
@@ -70,7 +70,7 @@ def atksieve(n=10):
     return [i for i in range(len(res)) if res[i]]
 
 
-def trdiv(n):
+def true_div(n):
     a = []
     f = 2
     while n > 1:

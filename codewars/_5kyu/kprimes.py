@@ -1,3 +1,5 @@
+from functools import lru_cache
+
 
 def count_Kprimes(k, start, end):
     return [i for i in range(start, end + 1) if kprime(i) == k]
@@ -10,6 +12,7 @@ def puzzle(s):
     return sum(1 for x in a for y in b for z in c if x + y + z == s)
 
 
+@lru_cache(None)
 def kprime(n):
     k = 0
     i = 2
