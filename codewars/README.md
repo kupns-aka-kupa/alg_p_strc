@@ -1,32 +1,58 @@
 <ul>
     <li>
         <ul>
+            <li> 4kyu </li>           
+             <li>
+                <div>
+                    <a target="__blank" href="https://www.codewars.com/kata/51c8e37cee245da6b40000bd">
+                        <img src="https://img.shields.io/badge/CodeWars%20-Strip Comments-blue.svg" alt="Strip Comments">
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <ul>
             <li> 5kyu </li>
             <li>
                 <div>
+                    <a target="__blank" href="https://www.codewars.com/kata/52e1476c8147a7547a000811">
+                        <img src="https://img.shields.io/badge/CodeWars%20-Regex Password Validation-darkorange.svg" alt="Regex Password Validation">
+                    </a>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <a target="__blank" href="https://www.codewars.com/kata/5ab23a9c1cec39668c000055">
+                        <img src="https://img.shields.io/badge/CodeWars%20-Regex for Gregorian date validation-darkorange.svg" alt="Regex for Gregorian date validation">
+                    </a>
+                </div>
+            </li>
+            <li>
+                <div>
                     <a target="__blank" href="https://www.codewars.com/kata/5726f813c8dcebf5ed000a6b">
-                        <img src="https://img.shields.io/badge/CodeWars%20-kPrimes-orange.svg" alt="kPrimes">
+                        <img src="https://img.shields.io/badge/CodeWars%20-kPrimes-darkorange.svg" alt="kPrimes">
                     </a>
                 </div>
             </li>
             <li>
                 <div>
                     <a target="__blank"href="https://www.codewars.com/kata/54d512e62a5e54c96200019e">
-                        <img src="https://img.shields.io/badge/CodeWars%20-Primes in numbers-orange.svg" alt="Primes in numbers">
+                        <img src="https://img.shields.io/badge/CodeWars%20-Primes in numbers-darkorange.svg" alt="Primes in numbers">
                     </a>
                 </div>
             </li>
             <li>
                 <div>
                     <a target="__blank"href="https://www.codewars.com/kata/520b9d2ad5c005041100000f">
-                        <img src="https://img.shields.io/badge/CodeWars%20-Simple Pig Latin-orange.svg" alt="Simple Pig Latin">
+                        <img src="https://img.shields.io/badge/CodeWars%20-Simple Pig Latin-darkorange.svg" alt="Simple Pig Latin">
                     </a>
                 </div>
             </li>
             <li>
                 <div>
                     <a target="__blank" href="https://www.codewars.com/kata/56e3cbb5a28956899400073f">
-                        <img src="https://img.shields.io/badge/CodeWars%20-Maximum Subarray Sum II-orange.svg" alt="Fibonacci, Tribonacci and friends">
+                        <img src="https://img.shields.io/badge/CodeWars%20-Maximum Subarray Sum II-darkorange.svg" alt="Fibonacci, Tribonacci and friends">
                     </a>
                 </div>
             </li>
