@@ -1,5 +1,5 @@
 
-def max_sequence(arr):
+def find_subarr_maxsum(arr):
     if not len(arr) or all(i <= 0 for i in arr):
         return [[], 0]
     _r, _l = [0], [0]

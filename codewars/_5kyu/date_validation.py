@@ -1,6 +1,15 @@
 import re
 
 
+def valid_date(s):
+    valid_date = re.compile("\[+(?:"
+                            "(?:(?:0[13578]|1[02])-31)|"
+                            "(?:(?:0[13-9]|1[0-2])-(?:29|30))|"
+                            "(?:(?:(?:0[1-9])|(?:1[0-2]))-(?:0[1-9]|1\d|2[0-8])))"
+                            "\]+")
+    return valid_date.search(s)
+
+
 def date_validation(s):
     match = re.match(re.compile('''
         ^(?P<day>0[1-9]|[12][0-9]|3[01])[.]

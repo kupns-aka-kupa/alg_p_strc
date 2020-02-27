@@ -1,13 +1,98 @@
 import unittest
-from .._5kyu.max_sub_array_sum import max_sequence
+from .._5kyu.max_sub_array_sum import find_subarr_maxsum
 from .._5kyu.kprimes import *
 from .._5kyu.simple_pig import pig_it
 from .._5kyu.number_factorization import primeFactors
 from .._5kyu.password_validation import validate_password
-from .._5kyu.date_validation import date_validation
+from .._5kyu.date_validation import date_validation, valid_date
+from .._5kyu.regex_prime_len import prime_len
+from .._5kyu.mod4_regex import mod4
+from .._5kyu.count_ip_addr import ips_between
+from .._5kyu.domain_name_extract import domain_name
 
 
 class Katas5TestCase(unittest.TestCase):
+    def test_domain_name_extract(self):
+        self.assertEqual(domain_name("http://google.com"), "google")
+        self.assertEqual(domain_name("http://google.co.jp"), "google")
+        self.assertEqual(domain_name("https://hyphen-site.org"), "hyphen-site")
+        self.assertEqual(domain_name("http://www.codewars.com/kata/"), "codewars")
+        self.assertEqual(domain_name("icann.org"), "icann")
+        self.assertEqual(domain_name("www.xakep.ru"), "xakep")
+        self.assertEqual(domain_name("https://youtube.com"), "youtube")
+
+    def test_find_sub_arr_sum(self):
+        self.assertEqual(find_subarr_maxsum([-2, 1, -3, 4, -1, 2, 1, -5, 4]), [[4, -1, 2, 1], 6])
+        self.assertEqual(find_subarr_maxsum([4, -1, 2, 1, -40, 1, 2, -1, 4]), [[[4, -1, 2, 1], [1, 2, -1, 4]], 6])
+        self.assertEqual(find_subarr_maxsum([-2, 1, 4, -1, 2, 1, -5, 4]), [[1, 4, -1, 2, 1], 7])
+        self.assertEqual(find_subarr_maxsum([-2, -1, 2, 1, -5, 4]), [[4], 4])
+        self.assertEqual(find_subarr_maxsum([2, 1, 2, 1]), [[2, 1, 2, 1], 6])
+        self.assertEqual(find_subarr_maxsum([-2, -1, -2, -1]), [[], 0])
+        self.assertEqual(find_subarr_maxsum([]), [[], 0])
+        arr = [4, 2, -8, 1, -2, -9, 6, 7, -3, 1, -4, 3, 3, -8, 4, -9, 5, 5, 6, 5]
+        self.assertEqual(find_subarr_maxsum(arr), [[[5, 5, 3, 0, -5, 5, 6, 7, 3], [5, 5, 3, 0, -5, 5, 6, 7, 3, 0]], 21])
+        arr = [10, 4, -9, 10, 0, -4, -8, -2, -4, 8, -9, -9, 8, -6, -10, -6, 10, 1, -7, 8]
+        self.assertEqual(find_subarr_maxsum(arr), [[[10, 4, -9, 10], [10, 4, -9, 10, 0]], 15])
+        arr = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
+        self.assertEqual(find_subarr_maxsum(arr), [[4, -1, 2, 1], 6])
+        arr = [4, -1, 2, 1, -40, 1, 2, -1, 4]
+        self.assertEqual(find_subarr_maxsum(arr),
+                         [[[4, -1, 2, 1], [1, 2, -1, 4]], 6])
+        arr = [-4, -1, -2, -1, -40, -1, -2, -1, -4]
+        self.assertEqual(find_subarr_maxsum(arr), [[], 0])
+        arr = [2, 1, 3, 4, 1, 2, 1, 5, 4]
+        self.assertEqual(find_subarr_maxsum(arr),
+                         [[2, 1, 3, 4, 1, 2, 1, 5, 4], 23])
+
+    def test_regex_prime_len(self):
+        self.assertEqual(prime_len(''), None)
+        self.assertEqual(prime_len('x'), None)
+        self.assertEqual(prime_len('xxxx'), None)
+        self.assertEqual(prime_len('xxxxxx'), None)
+        self.assertEqual(prime_len('xxxxxxxx'), None)
+        self.assertEqual(prime_len('xxxxxxxxx'), None)
+        self.assertEqual(prime_len('xxxxxxxxxx'), None)
+        self.assertEqual(prime_len('xxxxxxxxxxxx'), None)
+        self.assertEqual(prime_len('xxxxxxxxxxxxxx'), None)
+        self.assertEqual(prime_len('xxxxxxxxxxxxxxx'), None)
+        self.assertEqual(prime_len('xxxxxxxxxxxxxxxx'), None)
+        self.assertNotEqual(prime_len('xx'), None)
+        self.assertNotEqual(prime_len('xxx'), None)
+        self.assertNotEqual(prime_len('xxxxx'), None)
+        self.assertNotEqual(prime_len('xxxxxxx'), None)
+        self.assertNotEqual(prime_len('xxxxxxxxxxx'), None)
+        self.assertNotEqual(prime_len('xxxxxxxxxxxxx'), None)
+
+    def test_ip_count(self):
+        self.assertEqual(ips_between("10.0.0.0", "10.0.0.50"), 50)
+        self.assertEqual(ips_between("10.0.0.0", "10.0.1.0"), 256)
+        self.assertEqual(ips_between("20.0.0.10", "20.0.1.0"), 246)
+
+    def test_mod4_regex(self):
+        valid = ["[+05620]", "[005624]", "[-05628]", "[005632]", "[555636]", "[+05640]", "[005600]",
+                 "the beginning [-0] the end", "~[4]", "[32]",
+                 "the beginning [0] ... [invalid] numb[3]rs ... the end",
+                 "...may be [+002016] will be."]
+        for test in valid:
+            self.assertNotEqual(mod4(test), None)
+        invalid = ["[+05621]", "[-55622]",
+                   "[005623]", "[~24]", "[8.04]",
+                   "No, [2014] isn't a multiple of 4..."]
+        for test in invalid:
+            self.assertEqual(mod4(test), None)
+
+    def test_valid_date(self):
+        self.assertEqual(valid_date("[02-31]"), None)
+        self.assertEqual(valid_date('&08-13]'), None)
+        self.assertNotEqual(valid_date("[01-23]"), None)
+        self.assertNotEqual(valid_date("[[[08-29]]]"), None)
+        self.assertNotEqual(valid_date("[02-16]"), None)
+        self.assertEqual(valid_date("[ 6-03]"), None)
+        self.assertNotEqual(valid_date("ignored [08-11] ignored"), None)
+        self.assertNotEqual(valid_date("[3] [12-04] [09-tenth]"), None)
+        self.assertEqual(valid_date("[02-00]"), None)
+        self.assertEqual(valid_date("[13-02]"), None)
+        self.assertNotEqual(valid_date("[02-[08-11]04]"), None)
 
     def test_date_validation(self):
         self.assertEqual(date_validation("29.02.2016"), True)
@@ -51,15 +136,6 @@ class Katas5TestCase(unittest.TestCase):
         self.assertEqual(validate_password('123abcABC'), True)
         self.assertEqual(validate_password('ABC123abc'), True)
         self.assertEqual(validate_password('Password123'), True)
-
-    def test_super_max_seq(self):
-        self.assertEqual(max_sequence([-2, 1, -3, 4, -1, 2, 1, -5, 4]), [[4, -1, 2, 1], 6])
-        self.assertEqual(max_sequence([4, -1, 2, 1, -40, 1, 2, -1, 4]), [[[4, -1, 2, 1], [1, 2, -1, 4]], 6])
-        self.assertEqual(max_sequence([-2, 1, 4, -1, 2, 1, -5, 4]), [[1, 4, -1, 2, 1], 7])
-        self.assertEqual(max_sequence([-2, -1, 2, 1, -5, 4]), [[4], 4])
-        self.assertEqual(max_sequence([2, 1, 2, 1]), [[2, 1, 2, 1], 6])
-        self.assertEqual(max_sequence([-2, -1, -2, -1]), [[], 0])
-        self.assertEqual(max_sequence([]), [[], 0])
 
     def test_k_number(self):
         self.assertEqual(count_Kprimes(5, 500, 600), [500, 520, 552, 567, 588, 592, 594])
