@@ -6,9 +6,45 @@ from .._4kyu.rectangle_rotation import rectangle_rotation
 from .._4kyu.ranking_system import User
 from .._4kyu.matrix_determinant import determinant
 from .._4kyu.permutations import permutations
+from .._4kyu.string_iteration import string_func
+from .._4kyu.longest_palindromic_substring import longest_palindromic_substring
+from .._4kyu.format_duration import format_duration
+from .._4kyu.factorial_tail import zeroes
 
 
 class Katas4TestCase(unittest.TestCase):
+
+    def test_factorial_tail(self):
+        self.assertEqual(zeroes(10, 10), 2)
+        self.assertEqual(zeroes(16, 16), 3)
+        self.assertEqual(zeroes(17, 16), 0)
+        self.assertEqual(zeroes(7, 50), 0)
+
+    def test_format_duration(self):
+        self.assertEqual(format_duration(0), "now")
+        self.assertEqual(format_duration(1), "1 second")
+        self.assertEqual(format_duration(62), "1 minute and 2 seconds")
+        self.assertEqual(format_duration(120), "2 minutes")
+        self.assertEqual(format_duration(3600), "1 hour")
+        self.assertEqual(format_duration(3662), "1 hour, 1 minute and 2 seconds")
+        self.assertEqual(format_duration(132030240), '4 years, 68 days, 3 hours and 4 minutes')
+        self.assertEqual(format_duration(8468941), '98 days, 29 minutes and 1 second')
+
+    def test_longest_palindromic_substring(self):
+        self.assertEqual(longest_palindromic_substring("babad"), "bab")
+        self.assertEqual(longest_palindromic_substring("abababa"), "abababa")
+        self.assertEqual(longest_palindromic_substring("cbbd"), "bb")
+        self.assertEqual(longest_palindromic_substring("ab"), "a")
+        self.assertEqual(longest_palindromic_substring(""), "")
+
+    def test_string_iteration(self):
+        self.assertEqual(string_func("String", 1), "gSntir")
+        self.assertEqual(string_func("String", 3), "nrtgSi")
+        self.assertEqual(string_func("This is a string exemplification!", 0), "This is a string exemplification!")
+        self.assertEqual(string_func("String for test: incommensurability", 1), "ySttirliinbga rfuosrn etmemsotc:n i")
+        self.assertEqual(string_func("Ohh Man God Damn", 7), " nGOnmohaadhMD  ")
+        self.assertEqual(string_func("Ohh Man God Damnn", 19), "haG mnad MhO noDn")
+
     def test_permutations(self):
         self.assertEqual(sorted(permutations('a')), ['a'])
         self.assertEqual(sorted(permutations('ab')), ['ab', 'ba'])

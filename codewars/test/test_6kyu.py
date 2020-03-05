@@ -4,6 +4,7 @@ from .._6kyu.ulam_seq import ulam_seq
 
 
 class Katas6TestCase(unittest.TestCase):
+
     def test_super_sum(self):
         self.assertEqual(super_sum(1, 1), 0)
         self.assertEqual(super_sum(1, 10), 45)

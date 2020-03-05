@@ -1,5 +1,5 @@
 import math
-from modules._decor import timeit
+from algorithms._decor import timeit
 
 
 @timeit

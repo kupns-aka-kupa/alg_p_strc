@@ -1,0 +1,146 @@
+codewars:
+  url: https://www.codewars.com
+user:
+  kata:
+    authored: []
+    completed:
+    - href: 52742f58faf5485cae000b9a
+      level: 4
+      text: Human readable duration format
+    - href: 5254ca2719453dcc0b00027d
+      level: 4
+      text: Permutations
+    - href: 566efcfbf521a3cfd2000056
+      level: 7
+      text: Reversing Fun
+    - href: 514a024011ea4fb54200004b
+      level: 5
+      text: Extract the domain name from a URL
+    - href: 52a382ee44408cea2500074c
+      level: 4
+      text: Matrix Determinant
+    - href: 51fda2d95d6efda45e00004e
+      level: 4
+      text: Codewars style ranking system
+    - href: 5c2cea87b0aea22f8181757c
+      level: 5
+      text: RegEx Like a Boss  4 CodeGolf   Prime length
+    - href: 54746b7ab2bc2868a0000acf
+      level: 5
+      text: Mod4 Regex
+    - href: 548db0bd1df5bbf29b0000b7
+      level: 5
+      text: validDate Regex
+    - href: 526989a41034285187000de4
+      level: 5
+      text: Count IP Addresses
+    - href: 5aba780a6a176b029800041c
+      level: 7
+      text: Maximum Multiple
+    - href: 55f9bca8ecaa9eac7100004a
+      level: 8
+      text: Beginner Series  2 Clock
+    - href: 5ab23a9c1cec39668c000055
+      level: 5
+      text: Regex for Gregorian date validation
+    - href: 52e1476c8147a7547a000811
+      level: 5
+      text: Regex Password Validation
+    - href: 51c8e37cee245da6b40000bd
+      level: 4
+      text: Strip Comments
+    - href: 55695bc4f75bbaea5100016b
+      level: 5
+      text: Fibonacci Streaming
+    - href: 529adbf7533b761c560004e5
+      level: 5
+      text: Memoized Fibonacci
+    - href: 5264d2b162488dc400000001
+      level: 6
+      text: 'Stop gninnipS My sdroW '
+    - href: 526dad7f8c0eb5c4640000a4
+      level: 5
+      text: Vector class
+    - href: 5e41c408b72541002eda0982
+      level: 5
+      text: 'Multi Line Task  Hello World  Easy one '
+    - href: 54d512e62a5e54c96200019e
+      level: 5
+      text: Primes in numbers
+    - href: 520b9d2ad5c005041100000f
+      level: 5
+      text: Simple Pig Latin
+    - href: 5726f813c8dcebf5ed000a6b
+      level: 5
+      text: k Primes
+    - href: 5995ff073acba5fa3a00011d
+      level: 6
+      text: Ulam Sequences
+    - href: 514b92a657cdc65150000006
+      level: 6
+      text: Multiples of 3 or 5
+    - href: 55b080eabb080cd6f8000035
+      level: 6
+      text: 'What will be the odd one out '
+    - href: 54521e9ec8e60bc4de000d6c
+      level: 5
+      text: Maximum subarray sum
+    - href: 5966ec8e62d030d8530000a7
+      level: 6
+      text: 'Super Coordinate Sums '
+    - href: 556e0fccc392c527f20000c5
+      level: 6
+      text: Fibonacci  Tribonacci and friends
+    - href: 58184387d14fc32f2b0012b2
+      level: 6
+      text: 'Floating point Approximation  I '
+    - href: 556deca17c58da83c00002db
+      level: 6
+      text: Tribonacci Sequence
+    - href: 55cbc3586671f6aa070000fb
+      level: 8
+      text: Grasshopper   Check for factor
+    - href: 55f73be6e12baaa5900000d4
+      level: 8
+      text: Grasshopper   Messi goals function
+    - href: 50654ddff44f800200000004
+      level: 8
+      text: Multiply
+    unfinished:
+    - href: 56e3cbb5a28956899400073f
+      level: 5
+      text: Maximum Subarray Sum II
+    - href: 532a69ee484b0e27120000b6
+      level: 5
+      text: Vector Class
+    - href: 53fe3578d5679bf04900093f
+      level: 5
+      text: Rotate a square matrix in place
+    - href: 535bfa2ccdbf509be8000113
+      level: 5
+      text: First n Prime Numbers
+    - href: 58603c898989d15e9e000475
+      level: 5
+      text: Master your primes  sieve with memoization
+    - href: 58112f8004adbbdb500004fe
+      level: 6
+      text: SQL Basics  Simple UNION ALL
+    - href: 5886e082a836a691340000c3
+      level: 4
+      text: Simple Fun  27  Rectangle Rotation
+    - href: 5ae64f28d2ee274164000118
+      level: 4
+      text: String    X Iterations    String
+    - href: 5ae43ed6252e666a6b0000a4
+      level: 5
+      text: String    N iterations    String
+    - href: 55b350026cc02ac1a7000032
+      level: 6
+      text: Convert integer to Whitespace format
+    - href: 5263c6999e0f40dee200059d
+      level: 4
+      text: The observed PIN
+    - href: 55c4eb777e07c13528000021
+      level: 4
+      text: Factorial tail
+  name: kupns-aka-kupa

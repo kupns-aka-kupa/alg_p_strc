@@ -1,10 +1,10 @@
 from random import randint
 
-from modules._random import msrand
-from modules._search import linse, reclinse, binse
-from modules._sort import chanso, bubso, mersow, inso
-from modules._pnum import erat_sieve, html_table_gen, atkin_sieve, true_div
-from modules._output import filew
+from algorithms._random import msrand
+from algorithms._search import linse, reclinse, binse
+from algorithms._sort import chanso, bubso, mersow, inso
+from algorithms._pnum import erat_sieve, html_table_gen, atkin_sieve, true_div
+from algorithms._output import filew
 
 if __name__ == "__main__":
     lenght = input('Enter massive lenght:',)

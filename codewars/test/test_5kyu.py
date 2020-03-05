@@ -9,9 +9,51 @@ from .._5kyu.regex_prime_len import prime_len
 from .._5kyu.mod4_regex import mod4
 from .._5kyu.count_ip_addr import ips_between
 from .._5kyu.domain_name_extract import domain_name
+from .._5kyu.jumbled_string import jumbled_string
 
 
 class Katas5TestCase(unittest.TestCase):
+
+    def test_find_subarr_maxsum(self):
+        self.describe("Basic Tests")
+        arr = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
+        self.assertEqual(find_subarr_maxsum(arr), [[4, -1, 2, 1], 6])
+         
+        arr = [4, -1, 2, 1, -40, 1, 2, -1, 4]
+        self.assertEqual(find_subarr_maxsum(arr), 
+        [[[4, -1, 2, 1], [1, 2, -1, 4]], 6])
+         
+        arr = [-4, -1, -2, -1, -40, -1, -2, -1, -4]
+        self.assertEqual(find_subarr_maxsum(arr), [[], 0])
+         
+        arr = [2, 1, 3, 4, 1, 2, 1, 5, 4]
+        self.assertEqual(find_subarr_maxsum(arr), 
+        [[2, 1, 3, 4, 1, 2, 1, 5, 4], 23])
+         
+    def test_jumbled_string(self):
+        self.assertAlmostEqual()
+        self.assertEqual("123", jumbled_string("123", 2))
+        self.assertEqual("1234", jumbled_string("1234", 2))
+        self.assertEqual("12345", jumbled_string("12345", 4))
+        self.assertEqual("123456", jumbled_string("123456", 4))
+        self.assertEqual("1234567", jumbled_string("1234567", 6))
+        self.assertEqual("12345678", jumbled_string("12345678", 6))
+        self.assertEqual("123456789", jumbled_string("123456789", 6))
+        self.assertEqual("1234567890", jumbled_string("1234567890", 6))
+        self.assertEqual("12345678901", jumbled_string("12345678901", 10))
+        self.assertEqual("123456789012", jumbled_string("123456789012", 10))
+        self.assertEqual("1234567890123", jumbled_string("1234567890123", 12))
+        self.assertEqual("12345678901234567", jumbled_string("12345678901234567", 8))
+        self.assertEqual("12345678901234567890", jumbled_string("12345678901234567890", 18))
+        self.assertEqual("123456789012345678901234567890", jumbled_string("123456789012345678901234567890", 28))
+        self.assertEqual("Sc o!uhWw", jumbled_string("Such Wow!", 1))
+        self.assertEqual("Such Wow!", jumbled_string("Such Wow!", 6))
+        self.assertEqual("bexltept merae", jumbled_string("better example", 2))
+        self.assertEqual("better example", jumbled_string("better example", 12))
+        self.assertEqual("qtorieuwy", jumbled_string("qwertyuio", 2))
+        self.assertEqual("Gtsegenri", jumbled_string("Greetings", 8))
+        self.assertEqual("Greetings", jumbled_string("Greetings", 6))
+
     def test_domain_name_extract(self):
         self.assertEqual(domain_name("http://google.com"), "google")
         self.assertEqual(domain_name("http://google.co.jp"), "google")
