@@ -8,6 +8,8 @@ from selenium import webdriver
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 from selenium.webdriver.firefox.options import Options
 
+from .meta import generate_readme
+
 try:
     from yaml import CLoader as Loader, CDumper as Dumper
 except ImportError:
@@ -46,47 +48,14 @@ KATA_LEVELS = {
 TAB_CHAR = " " * 4
 
 
-def create_list_item(href, text, level):
-    badge_url = "https://img.shields.io/badge/"
-    badge_header = "CodeWars"
-    return f"""
-    <li>
-        <div>
-            <a target="__blank" href="{data['codewars']['url']}/kata/{href}">
-            <img src="{badge_url}{badge_header}%20-{text}-{KATA_LEVELS[level]}.svg"
-            alt="{text}">
-            </a>
-        </div>
-    </li>"""
-
-
-def generate_readme(data):
-    out = ""
-    for v in data["user"]["kata"]:
-        out += "# " + v[0].upper() + v[1:] + "\n\n"
-        out += "<ul>"
-        for kata in sorted(data["user"]["kata"][v], key=lambda i: i["level"]):
-            out += create_list_item(**kata)
-        out += "</ul>\n\n"
-
-    with open("README.md", 'w') as readme:
-        readme.write(out)
-
-
 def refresh_data():
-    with open(META_DATA, 'r') as d:
-        data = load(d, Loader=Loader)
-
     for t in KATA_TYPE:
         url = data["codewars"]["url"] + "/users/" + data["user"]["name"] + "/" + t
         # html = requests.get(url, headers=headers).text
-
         browser = webdriver.Firefox(**BROWSER_CONFIG)
         browser.get(url)
 
-        # Get scroll height
         last_height = browser.execute_script("return document.body.scrollHeight")
-
         while True:
             browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
             time.sleep(SCROLL_PAUSE_TIME)
@@ -94,6 +63,7 @@ def refresh_data():
             if new_height == last_height:
                 break
             last_height = new_height
+
         html = browser.page_source
         soup = bs4.BeautifulSoup(html, 'lxml')
         data["user"]["kata"][t] = [{"href": kata.find("a").get("href").split("/")[-1],
@@ -107,7 +77,7 @@ def refresh_data():
 
 
 def convert_to_unittest(s):
-    commands = ((re.compile(r'^test(?=\.)'), "self"),
+    commands = ((re.compile(r'^[\s*]test(?=\.)'), "self"),
                 (re.compile(r"assert_equals(?=\()"), "assertEqual"),
                 (re.compile(r"assert_approx_equals(?=\()"), "assertAlmostEqual"),
                 )
@@ -122,6 +92,9 @@ def generate_test(func_name, test_body_raw):
 
 
 def generate_function_body(url):
+    with open(META_DATA, 'r') as d:
+        data = load(d, Loader=Loader)
+
     url = data["codewars"]["url"] + "/kata/" + url + "/train/python"
     browser = webdriver.Firefox(**BROWSER_CONFIG)
     browser.get(url)

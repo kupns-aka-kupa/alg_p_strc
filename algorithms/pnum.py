@@ -1,34 +1,6 @@
 from math import floor
 
 
-def html_table_gen(mass):
-    str_res = ''
-    table = {
-        'tbs': '<table border="1">',
-        'trs': '<tr>',
-        'tds': '<td><p>',
-        'tde': '</p></td>',
-        'tre': '</tr>',
-        'tbe': '</table>'
-    }
-
-    str_res += table['tbs']
-    s = 10
-    i = 0
-    while i < len(mass):
-        str_res += table['trs']
-        j = 0
-        while j < 10:
-            try:
-                str_res += table['tds'] + str(mass[j + i]) + table['tde']
-                j += 1
-            except IndexError:
-                break
-
-        str_res += table['tre']
-        i += s
-    str_res += table['tbe']
-    return str_res
 
 
 def erat_sieve(end=10):

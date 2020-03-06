@@ -34,6 +34,5 @@ void TestGraph::testCasePopItem()
 {
 }
 
-//QTEST_MAIN(TestGraph)
 
 #include "tst_testgraph.moc"

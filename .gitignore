@@ -8,3 +8,4 @@ lib/
 *.user
 build*
 *.log
+*.jpg

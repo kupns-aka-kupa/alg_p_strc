@@ -10,15 +10,6 @@ class Tree : Graph<T>
 {
 private:
     NodeKDLL<K, T> *_root;
-
-    union
-    {
-        NodeKDLL<K, T> *_l_leaf;
-        NodeKDLL<K, T> *_r_leaf;
-        uint32_t _depth;
-        uint32_t _width;
-    };
-
 public:
     Tree();
     ~Tree();
@@ -34,8 +25,7 @@ public:
 
 template<typename K, typename T>
 Tree<K, T>::Tree():
-    _root(nullptr),
-    _l_leaf(nullptr)
+    _root(nullptr)
 {}
 
 template<typename K, typename T>

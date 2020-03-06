@@ -58,7 +58,4 @@ void TestList::testCaseReverse()
     list.print();
 }
 
-
-QTEST_MAIN(TestList)
-
 #include "tst_testlist.moc"

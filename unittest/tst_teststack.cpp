@@ -44,6 +44,4 @@ void TestStack::testCasePopItem()
     stack.pop();
 }
 
-//QTEST_MAIN(TestStack)
-
 #include "tst_teststack.moc"

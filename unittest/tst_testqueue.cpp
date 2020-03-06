@@ -42,6 +42,4 @@ void TestQueue::testCasePopItem()
     queue.pop();
 }
 
-//QTEST_MAIN(TestQueue)
-
 #include "tst_testqueue.moc"
