@@ -6,6 +6,7 @@ venv/
 .git/
 lib/
 *.user
-build*
+[Bb]uild*
+[Bb]in
 *.log
 *.jpg

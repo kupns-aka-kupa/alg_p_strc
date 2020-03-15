@@ -1,51 +1,56 @@
 import unittest
-from .._5kyu.max_sub_array_sum import find_subarr_maxsum
-from .._5kyu.kprimes import *
-from .._5kyu.simple_pig import pig_it
+from .._5kyu.maximum_subarray_sum_ii import find_subarr_maxsum
+from .._5kyu.k_primes import *
+from .._5kyu.simple_pig_latin import pig_it
 from .._5kyu.number_factorization import primeFactors
-from .._5kyu.password_validation import validate_password
-from .._5kyu.date_validation import date_validation, valid_date
-from .._5kyu.regex_prime_len import prime_len
+from .._5kyu.regex_password_validation import validate_password
+from .._5kyu.validdate_regex import date_validation, valid_date
+from .._5kyu.regex_like_a_boss__4_codegolf___prime_length import prime_len
 from .._5kyu.mod4_regex import mod4
-from .._5kyu.count_ip_addr import ips_between
-from .._5kyu.domain_name_extract import domain_name
+from .._5kyu.count_ip_addresses import ips_between
+from .._5kyu.extract_the_domain_name_from_a_url import domain_name
 from .._5kyu.jumbled_string import jumbled_string
+from .._5kyu.rotate_a_square_matrix_in_place import rotate_in_place
+from .._5kyu.prime_memoization import is_prime
 
 
 class Katas5TestCase(unittest.TestCase):
 
-    def test_find_subarr_maxsum(self):
-        self.describe("Basic Tests")
-        arr = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
-        self.assertEqual(find_subarr_maxsum(arr), [[4, -1, 2, 1], 6])
-         
-        arr = [4, -1, 2, 1, -40, 1, 2, -1, 4]
-        self.assertEqual(find_subarr_maxsum(arr), 
-        [[[4, -1, 2, 1], [1, 2, -1, 4]], 6])
-         
-        arr = [-4, -1, -2, -1, -40, -1, -2, -1, -4]
-        self.assertEqual(find_subarr_maxsum(arr), [[], 0])
-         
-        arr = [2, 1, 3, 4, 1, 2, 1, 5, 4]
-        self.assertEqual(find_subarr_maxsum(arr), 
-        [[2, 1, 3, 4, 1, 2, 1, 5, 4], 23])
-         
+    def test_prime_memoization(self):
+        self.assertEqual(is_prime(1), False)
+        self.assertEqual(is_prime(2), True)
+        self.assertEqual(is_prime(5), True)
+        self.assertEqual(is_prime(143), False)
+        self.assertEqual(is_prime(-1), False)
+        self.assertEqual(is_prime(29), True)
+        self.assertEqual(is_prime(53), True)
+        self.assertEqual(is_prime(529), False)
+        self.assertEqual(is_prime(90144263), False)
+
+    def test_rotate_in_place(self):
+        matrix = [[1, 2, 3],
+                  [4, 5, 6],
+                  [7, 8, 9]]
+        rmatrix = [[7, 4, 1],
+                   [8, 5, 2],
+                   [9, 6, 3]]
+
+        matrix2 = [[1, 2],
+                   [3, 4]]
+        rmatrix2 = [[3, 1],
+                    [4, 2]]
+
+        self.assertEqual(rotate_in_place(matrix2), rmatrix2)
+        self.assertEqual(rotate_in_place(matrix), rmatrix)
+
     def test_jumbled_string(self):
-        self.assertAlmostEqual()
+        s = "".join(str(i) for i in range(17))
+        self.assertEqual(s, jumbled_string(s, 22))
         self.assertEqual("123", jumbled_string("123", 2))
-        self.assertEqual("1234", jumbled_string("1234", 2))
+        self.assertEqual("1234", jumbled_string("1234", 4))
         self.assertEqual("12345", jumbled_string("12345", 4))
         self.assertEqual("123456", jumbled_string("123456", 4))
         self.assertEqual("1234567", jumbled_string("1234567", 6))
-        self.assertEqual("12345678", jumbled_string("12345678", 6))
-        self.assertEqual("123456789", jumbled_string("123456789", 6))
-        self.assertEqual("1234567890", jumbled_string("1234567890", 6))
-        self.assertEqual("12345678901", jumbled_string("12345678901", 10))
-        self.assertEqual("123456789012", jumbled_string("123456789012", 10))
-        self.assertEqual("1234567890123", jumbled_string("1234567890123", 12))
-        self.assertEqual("12345678901234567", jumbled_string("12345678901234567", 8))
-        self.assertEqual("12345678901234567890", jumbled_string("12345678901234567890", 18))
-        self.assertEqual("123456789012345678901234567890", jumbled_string("123456789012345678901234567890", 28))
         self.assertEqual("Sc o!uhWw", jumbled_string("Such Wow!", 1))
         self.assertEqual("Such Wow!", jumbled_string("Such Wow!", 6))
         self.assertEqual("bexltept merae", jumbled_string("better example", 2))
@@ -71,20 +76,21 @@ class Katas5TestCase(unittest.TestCase):
         self.assertEqual(find_subarr_maxsum([2, 1, 2, 1]), [[2, 1, 2, 1], 6])
         self.assertEqual(find_subarr_maxsum([-2, -1, -2, -1]), [[], 0])
         self.assertEqual(find_subarr_maxsum([]), [[], 0])
-        arr = [4, 2, -8, 1, -2, -9, 6, 7, -3, 1, -4, 3, 3, -8, 4, -9, 5, 5, 6, 5]
-        self.assertEqual(find_subarr_maxsum(arr), [[[5, 5, 3, 0, -5, 5, 6, 7, 3], [5, 5, 3, 0, -5, 5, 6, 7, 3, 0]], 21])
+
         arr = [10, 4, -9, 10, 0, -4, -8, -2, -4, 8, -9, -9, 8, -6, -10, -6, 10, 1, -7, 8]
         self.assertEqual(find_subarr_maxsum(arr), [[[10, 4, -9, 10], [10, 4, -9, 10, 0]], 15])
+
         arr = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
         self.assertEqual(find_subarr_maxsum(arr), [[4, -1, 2, 1], 6])
+
         arr = [4, -1, 2, 1, -40, 1, 2, -1, 4]
-        self.assertEqual(find_subarr_maxsum(arr),
-                         [[[4, -1, 2, 1], [1, 2, -1, 4]], 6])
+        self.assertEqual(find_subarr_maxsum(arr), [[[4, -1, 2, 1], [1, 2, -1, 4]], 6])
+
         arr = [-4, -1, -2, -1, -40, -1, -2, -1, -4]
         self.assertEqual(find_subarr_maxsum(arr), [[], 0])
+
         arr = [2, 1, 3, 4, 1, 2, 1, 5, 4]
-        self.assertEqual(find_subarr_maxsum(arr),
-                         [[2, 1, 3, 4, 1, 2, 1, 5, 4], 23])
+        self.assertEqual(find_subarr_maxsum(arr), [[2, 1, 3, 4, 1, 2, 1, 5, 4], 23])
 
     def test_regex_prime_len(self):
         self.assertEqual(prime_len(''), None)

@@ -1,9 +1,19 @@
 import unittest
-from .._6kyu.super_coords_sum import super_sum
-from .._6kyu.ulam_seq import ulam_seq
+from .._6kyu.super_coordinate_sums_ import super_sum
+from .._6kyu.ulam_sequences import ulam_seq
+from .._6kyu.convert_integer_to_whitespace_format import whitespace_number
 
 
-class Katas6TestCase(unittest.TestCase):
+class Kata6TestCase(unittest.TestCase):
+
+    def test_whitespace_convert(self):
+        def unbleach(ws):
+            return ws.replace(' ', '[space]').replace('\t', '[tab]').replace('\n', '[LF]')
+        self.assertEqual(unbleach(whitespace_number(1)), unbleach(" \t\n"))
+        self.assertEqual(unbleach(whitespace_number(0)), unbleach(" \n"))
+        self.assertEqual(unbleach(whitespace_number(-1)), unbleach("\t\t\n"))
+        self.assertEqual(unbleach(whitespace_number(2)), unbleach(" \t \n"))
+        self.assertEqual(unbleach(whitespace_number(-3)), unbleach("\t\t\t\n"))
 
     def test_super_sum(self):
         self.assertEqual(super_sum(1, 1), 0)

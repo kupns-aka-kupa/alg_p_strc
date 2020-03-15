@@ -3,7 +3,7 @@ from .._4kyu.longest_slide_down import longestSlideDown
 from .._4kyu.decompose_int import decompose
 from .._4kyu.strip_comments import strip_comments
 from .._4kyu.rectangle_rotation import rectangle_rotation
-from .._4kyu.ranking_system import User
+from .._4kyu.codewars_style_ranking_system import User
 from .._4kyu.matrix_determinant import determinant
 from .._4kyu.permutations import permutations
 from .._4kyu.string_iteration import string_func
@@ -12,7 +12,7 @@ from .._4kyu.format_duration import format_duration
 from .._4kyu.factorial_tail import zeroes
 
 
-class Katas4TestCase(unittest.TestCase):
+class Kata4TestCase(unittest.TestCase):
 
     def test_factorial_tail(self):
         self.assertEqual(zeroes(10, 10), 2)
