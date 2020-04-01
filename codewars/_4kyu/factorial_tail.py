@@ -1,6 +1,4 @@
 import re
-​
-# fixme
 def zeroes (base, number):
   f = 1
   for i in range(number): f *= i
