@@ -42,7 +42,7 @@ def generate_list_item(url, href, text, level, solution, ext):
             <a target="__blank" href="{url}/kata/{href}">
                 <img src="{badge_url}{kata_badge_header}%20-{text}-{KATA_LEVELS[level]}.svg" alt="{text}">
             </a>
-            <a target="__blank" href="{sol_url}_{level}kyu/{solution}.{ext}"> 
+            <a target="__blank" href="{sol_url}self{level}kyu/{solution}.{ext}"> 
                 <img src="{badge_url}{sol_badge_header}%20-Solution-green.svg" alt="Solution of {text}">
             </a>
         </div>

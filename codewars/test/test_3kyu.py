@@ -1,6 +1,62 @@
 import unittest
+import time
+from .._3kyu.metaclasses_simple_django_models import *
 from .._3kyu.binomial_expansion import expand
 from .._3kyu.million_fibonacci import fib
+
+
+class SimpleDjangoModelTestCase(unittest.TestCase):
+    class User(Model):
+        first_name = CharField(max_length=30, default='Adam')
+        last_name = CharField(max_length=50)
+        email = EmailField()
+        is_verified = BooleanField(default=False)
+        date_joined = DateTimeField(auto_now=True)
+        age = IntegerField(min_value=5, max_value=120, blank=True)
+
+    def test_date_time_field(self):
+        date = DateTimeField(default=datetime.datetime(2000, 1, 1, 0, 0))
+        t1 = date.default
+        time.sleep(1)
+        t2 = date.default
+        self.assertEqual(t1, t2)
+
+    def test_basic(self):
+        self.assertTrue(not hasattr(self.User, 'first_name'))
+        user1 = self.User()
+        self.assertEqual(user1.first_name, 'Adam')
+        user1.first_name = 'adam'
+        self.assertEqual(user1.first_name, 'adam')
+        self.assertEqual(user1.last_name, None)
+        self.assertEqual(user1.is_verified, False)
+
+        user = self.User()
+        user.email = 'adam@example.com'
+        self.assertEqual(user.email, 'adam@example.com')
+
+        user = self.User(first_name='Liam', last_name='Smith', email='liam@example.com')
+        self.assertEqual(user.first_name, 'Liam')
+        self.assertEqual(user.last_name, 'Smith')
+        self.assertEqual(user.email, 'liam@example.com')
+
+    def test_failure_assign(self):
+        user = self.User(first_name='Liam', last_name='Smith', email='liam@example.com')
+        self.assertTrue(user.validate())
+        user.age = 999
+        with self.assertRaises(ValidationError):
+            user.validate()
+
+    def test_validation(self):
+        field = CharField()
+        field.value = "aa"
+        field.validate()
+
+    def test_dif_data(self):
+        user1 = self.User(first_name="John", last_name="Doe")
+        user2 = self.User(first_name="Somebody", last_name="Else")
+
+        self.assertNotEqual(user1.first_name, user2.first_name)
+        self.assertNotEqual(user1.last_name, user2.last_name)
 
 
 class Kata3TestCase(unittest.TestCase):

@@ -31,3 +31,4 @@ def sync(ctx, all, project_files, readme, tests, sync):
 
 if __name__ == '__main__':
     cli(obj={})
+

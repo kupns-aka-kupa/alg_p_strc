@@ -37,7 +37,7 @@ def sync_kata_type(data, t):
     data["user"]["kata"][t] = [{"href": kata.find("a").get("href").split("/")[-1],
                                 "text": re.sub(r"[^\w+]", " ", kata.find("a").text),
                                 "level": int(kata.find("span").text[0]),
-                                "solution": re.sub(r"[^\w+]", "_", kata.find("a").text.lower()),
+                                "solution": re.sub(r"[^\w+]", "self", kata.find("a").text.lower()),
                                 "ext": "py",
                                 }
                                for kata in soup.find_all("div", attrs={"class": "item-title"})]
@@ -125,7 +125,7 @@ def generate_project_files(kata=None, gen_test=True):
 
     for k in kata:
         ext = f".{k['ext']}"
-        file_name = re.sub(r"[^\w+]", "_", k["text"].lower())
+        file_name = re.sub(r"[^\w+]", "self", k["text"].lower())
         file_path = f"_{k['level']}kyu"
 
         test_file = "test/test" + file_path + ext
