@@ -10,3 +10,4 @@ lib/
 [Bb]in
 *.log
 *.jpg
+cmake*

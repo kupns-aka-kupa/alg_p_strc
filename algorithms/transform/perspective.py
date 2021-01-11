@@ -79,3 +79,7 @@ def main(f: str, o: str = None):
     cv2.imwrite(o, img)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
+
+
+if __name__ == "__main__":
+    main("img.jpg")

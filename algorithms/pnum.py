@@ -2,16 +2,6 @@ from math import floor
 
 
 
-
-def erat_sieve(end=10):
-    _end = end + 1
-    sieve = set(range(2, _end))
-    for i in range(2, _end):
-        if i in sieve:
-            sieve -= set(range(2 * i, _end, i))
-    return sieve
-
-
 def atkin_sieve(n=10):
     sq = floor(n ** (1 / 2))
     res = [False for i in range(n)]
@@ -22,15 +12,18 @@ def atkin_sieve(n=10):
         for j in range(sq):
 
             fx = 4 * i ** 2 + j ** 2
-            if (fx % 12 == 1 or fx % 12 == 5) and fx <= n:
+            o = fx % 12
+            if (o == 1 or o == 5) and fx <= n:
                 res[fx] = not res[fx]
 
             fx = 3 * i ** 2 + j ** 2
-            if fx % 12 == 7 and fx <= n:
+            o = fx % 12
+            if o == 7 and fx <= n:
                 res[fx] = not res[fx]
 
             fx = 3 * i ** 2 - j ** 2
-            if n % 12 == 11 and fx <= n and i > j:
+            o = fx % 12
+            if o % 12 == 11 and fx <= n and i > j:
                 res[fx] = not res[fx]
 
     for i in range(5, sq):
@@ -43,6 +36,11 @@ def atkin_sieve(n=10):
 
 
 def true_div(n):
+    """
+    @param n: number
+    @type n: int
+    @return list of delimiters
+    """
     a = []
     f = 2
     while n > 1:

@@ -1,10 +1,8 @@
 def binomial(n, k):
     """
-    Args:
-       n: 
-       k: 
-
-    Returns:
+    @type n: int
+    @type k: int
+    @return:
         Binomial coefficient / n \
                              \k /
     """
